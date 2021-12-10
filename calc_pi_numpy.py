@@ -7,7 +7,7 @@ import numpy as np
 
 from utils import format_time
 
-def point_in_circle(x, y, radius=1):
+def point_in_circle(points, radius=1):
     """
     Checks whether a point (x, y) is part of a circle with a set radius.
 
@@ -17,7 +17,7 @@ def point_in_circle(x, y, radius=1):
     True
 
     """
-    ...
+    return np.sqrt(points[:, 0] ** 2 + points[:, 1] ** 2) <= radius
 
 def calculate_pi_timeit(points):
     """
@@ -28,7 +28,7 @@ def calculate_pi_timeit(points):
         """
         Calculates an approximated value of pi by the Monte Carlo method.
         """
-        ...
+        return (point_in_circle(np.random.random(size=(points, 2))).sum() * 4 / points)
     return calculate_pi
 
 
